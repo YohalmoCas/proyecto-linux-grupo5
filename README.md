@@ -1,18 +1,7 @@
-PROYECTO DE INTRODUCCIÓN AL SOFTWARE LIBRE
+El PROYECTO DE INTRODUCCIÓN AL SOFTWARE LIBRE consistió en la implementación de un servidor Linux, utilizando contenedores Docker, control de versiones Git y automatización, aplicando buenas prácticas de administración. Para la PREPARACIÓN DEL ENTORNO SERVIDOR, se configuró el host como servidor-grupo5 y se crearon los usuarios adminsys (con privilegios sudo), técnico (en el grupo soporte) y visitante (en el grupo web), junto con los grupos soporte y web. La estructura de directorios se estableció en /proyecto/ (datos/, web/, scripts/, capturas/), configurando los permisos de grupo para datos/ (grupo soporte) y web/ (grupo web), asegurando la herencia de grupo para los archivos internos.
 
+En la sección de AUTOMATIZACIÓN Y MONITOREO, se desarrolló el script reporte_sistema.sh en /proyecto/scripts/, el cual muestra información clave del sistema (fecha/hora, host, usuarios, disco, RAM, contenedores Docker activos). Este script fue programado mediante Cron para ejecutarse cada 30 minutos, con la salida registrada en el archivo /var/log/proyecto/reporte_sistema.log, verificándose su correcta actualización.
 
+Para el CONTROL DE VERSIONES, se inicializó un repositorio Git en /proyecto/ y se configuró el repositorio remoto en GitHub (proyecto-linux-grupo5), creando el archivo README.md. Los pasos documentados incluyen la instalación de Git, la configuración global del usuario y el flujo estándar de git init, git add ., git commit -m "...", git remote add origin... y git push -u origin main.
 
-El proyecto consiste en implementar un servidor Linux usando contenedores Docker, control de versiones y virtualización.
-
-PASOS DE INSTALACIÓN
-
-Control de versiones
-1- Tener actualizado el sistema con sudo apt-get update y sudo apt-get upgrade
-2- Descargar e instalar git con sudo apt install git
-3- Crear un repositorio en Github
-4- Configurar git con sudo git --config --user.name "name" y sudo git --config --user.email "email"
-5- Iniciar el repocitorio local con sudo git init en el directorio del proyecto
-6- Agregar cambios con sudo git add .
-7- Registrarlos con sudo git commit -m "mensaje"
-8- Subirlo a github con sudo push
-   escribir nombre de usuario y token de la plataforma
+Finalmente, en el área de DOCKER, se instaló y configuró el servicio, agregando a los usuarios adminsys y técnico al grupo docker. Se desplegó un Contenedor Web Nginx: el archivo index.html fue creado en /proyecto/web/, y el contenedor se ejecutó en modo detached, mapeando el puerto 8080 del host al 80 del contenedor, utilizando un montaje de volumen de /proyecto/web/ hacia /usr/share/nginx/html/. El funcionamiento fue verificado exitosamente accediendo a http://localhost:8080 y revisando los logs.
