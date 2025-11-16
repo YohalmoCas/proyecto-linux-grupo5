@@ -1,6 +1,7 @@
 PROYECTO DE INTRODUCCIÓN AL SOFTWARE LIBRE
 
 
+
 El proyecto consiste en implementar un servidor Linux usando contenedores Docker, control de versiones y virtualización.
 
 PASOS DE INSTALACIÓN
